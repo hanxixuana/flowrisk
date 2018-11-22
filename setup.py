@@ -74,7 +74,7 @@ We made the differences because the core of our package is a recursive estimator
 """
 
 setup(
-    name='FlowRisk',
+    name='flowrisk',
     version='0.1',
     description='Order flow risk measures in Python',
     long_description=long_description,
@@ -83,7 +83,7 @@ setup(
     author='Xixuan Han',
     author_email='xixuanhan@gmail.com',
     license='MIT',
-    packages=['flowrisk'],
+    packages=['flowrisk', 'flowrisk.examples'],
     install_requires=[
       'numpy', 'pandas', 'matplotlib', 'scipy'
     ],
