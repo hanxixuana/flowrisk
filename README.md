@@ -21,8 +21,8 @@ To implement VPIN, we made
     2.  a numpy.ndarray based buckets with bulk classification of volumes (BulkClassificationBuckets)
     3.  a recursive VPIN estimator (RecursiveVPIN)
     4.  a recursive VPIN estimator with VPIN confidence intervals (RecursiveConfVPIN)
-    5.  a recursive GBM model with an EWMA estimator of means using RecursiveEWMAVol for confidence intervals 
-        (RecursiveEWMABand)
+    5.  a recursive model using an EWMA estimator of means and RecursiveEWMAVol, for modeling and log 
+        innovations of VPINs and for calculating VPINs' confidence intervals (RecursiveEWMABand)
     6.  a one-shoot VPIN estimator for a series of prices (BulkVPIN)
     7.  a one-shoot VPIN estimator for a series of prices with VPIN confidence intervals (BulkConfVPIN)
     8.  various configuration classes (RecursiveVPINConfig, RecursiveConfVPINConfig, BulkVPINConfig, 
