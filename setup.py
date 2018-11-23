@@ -3,7 +3,8 @@
 # Created by Xixuan on Nov 22, 2018
 #
 
-from setuptools import setup
+import setuptools
+
 
 long_description = """
 # Order Flow Risk Measures
@@ -72,7 +73,7 @@ We made the differences because the core of our package is a recursive estimator
 
 """
 
-setup(
+setuptools.setup(
     name='flowrisk',
     version='0.1',
     description='Order flow risk measures in Python',
@@ -82,9 +83,14 @@ setup(
     author='Xixuan Han',
     author_email='xixuanhan@gmail.com',
     license='MIT',
-    packages=['flowrisk', 'flowrisk.examples'],
+    packages=setuptools.find_packages(),
     install_requires=[
-      'numpy', 'pandas', 'matplotlib', 'scipy'
+        'numpy', 'pandas', 'matplotlib', 'scipy'
     ],
-    zip_safe=True
+    zip_safe=True,
+    classifiers=[
+        "Programming Language :: Python :: 2.7",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ]
 )
