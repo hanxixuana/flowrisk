@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='flowrisk',
-    version='0.2',
+    version='0.2.1',
     description='Order flow risk measures in Python',
     long_description=long_description,
     long_description_content_type="text/markdown",
