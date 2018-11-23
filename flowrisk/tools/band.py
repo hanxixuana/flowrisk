@@ -5,7 +5,7 @@
 
 import numpy as np
 
-from flowrisk.vol import RecursiveEWMAVol
+from flowrisk.tools.vol import RecursiveEWMAVol
 
 from abc import ABCMeta, abstractmethod
 

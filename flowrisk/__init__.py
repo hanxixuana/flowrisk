@@ -3,14 +3,13 @@
 #   Created by Xixuan on Nov 20, 2018
 #
 
-from flowrisk.vpin import RecursiveVPINConfig, RecursiveVPIN
-from flowrisk.vpin import BulkVPINConfig, BulkVPIN
-from flowrisk.vpin import BulkConfVPINConfig, BulkConfVPIN
+from flowrisk.toxicity.vpin import RecursiveVPINConfig, RecursiveVPIN
+from flowrisk.toxicity.vpin import BulkVPINConfig, BulkVPIN
+from flowrisk.toxicity.vpin import BulkConfVPINConfig, BulkConfVPIN
 
-import vol
-import bulk
+from flowrisk.tools import vol
 import measure
-import vpin
+from flowrisk.toxicity import vpin, bulk
 import examples
 
 

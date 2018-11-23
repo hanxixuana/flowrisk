@@ -7,9 +7,9 @@ import numpy as np
 import pandas as pd
 
 from flowrisk.measure import RecursiveMeasure, BulkMeasure
-from flowrisk.vol import Vol, RecursiveEWMAVol
-from flowrisk.bulk import Buckets, BulkClassificationBuckets
-from flowrisk.band import Band, RecursiveEWMABand
+from flowrisk.tools.vol import Vol, RecursiveEWMAVol
+from flowrisk.toxicity.bulk import Buckets, BulkClassificationBuckets
+from flowrisk.tools.band import Band, RecursiveEWMABand
 
 
 class Config(object):

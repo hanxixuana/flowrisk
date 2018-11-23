@@ -6,7 +6,7 @@
 import os
 import pandas as pd
 
-from flowrisk.vpin import BulkConfVPINConfig, BulkConfVPIN
+from flowrisk.toxicity.vpin import BulkConfVPINConfig, BulkConfVPIN
 
 
 class DataLoader(object):
