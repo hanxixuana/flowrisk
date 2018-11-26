@@ -8,7 +8,7 @@ import pandas as pd
 
 from flowrisk.measure import RecursiveMeasure, BulkMeasure
 from flowrisk.tools.vol import Vol, RecursiveEWMAVol
-from flowrisk.toxicity.bulk import Buckets, BulkClassificationBuckets
+from flowrisk.toxicity.bulk import Buckets, RecursiveBulkClassMABuckets
 from flowrisk.tools.band import Band, RecursiveEWMABand
 
 
@@ -40,9 +40,9 @@ class RecursiveVPINConfig(Config):
     VOL_DECAY = 0.8
     VOL_ESTIMATOR = RecursiveEWMAVol
 
-    N_BUCKET = 20
+    N_BUCKET_OR_BUCKET_DECAY = 20
     BUCKET_MAX_VOLUME = 100000.0
-    BUCKETS = BulkClassificationBuckets
+    BUCKETS = RecursiveBulkClassMABuckets
 
     TIME_BAR_TIME_STAMP_COL_NAME = 'time'
     TIME_BAR_PRICE_COL_NAME = 'price'
@@ -67,7 +67,7 @@ class RecursiveVPIN(RecursiveMeasure):
 
         self.buckets = self.config.BUCKETS(
             self.config.BUCKET_MAX_VOLUME,
-            self.config.N_BUCKET,
+            self.config.N_BUCKET_OR_BUCKET_DECAY,
         )
         self.vol_estimator = self.config.VOL_ESTIMATOR(
             self.config.VOL_DECAY, 'pnl'
@@ -111,11 +111,7 @@ class RecursiveVPIN(RecursiveMeasure):
         self.latest_time = time_bar[self.config.TIME_BAR_TIME_STAMP_COL_NAME]
         self.latest_vpin = (
                 np.sum(
-                    np.abs(
-                        self.buckets.get_bucket_buy_volume()
-                        -
-                        self.buckets.get_bucket_sell_volume()
-                    )
+                    self.buckets.get_order_imbalance()
                 )
                 /
                 np.sum(
@@ -176,14 +172,14 @@ class RecursiveConfVPIN(RecursiveVPIN):
         )
 
         self.latest_time = time_bar[self.config.TIME_BAR_TIME_STAMP_COL_NAME]
-        self.latest_vpin = (
-                np.abs(
-                    self.buckets.get_bucket_buy_volume()
-                    -
-                    self.buckets.get_bucket_sell_volume()
-                ).sum()
+        self.latest_vpin = float(
+                np.sum(
+                    self.buckets.get_order_imbalance()
+                )
                 /
-                self.buckets.get_bucket_volume().sum()
+                np.sum(
+                    self.buckets.get_bucket_volume()
+                )
         )
 
         if not self.band_estimator.is_initialized():
@@ -223,7 +219,7 @@ class BulkVPIN(BulkMeasure):
         """
         Estimate the measure using time series data.
         :param pd.DataFrame data:       DataFrame of market data
-        :rtype:                         pd.Series
+        :rtype:                         pd.DataFrame
         """
         self.check_data(data)
 
@@ -304,7 +300,7 @@ class BulkConfVPIN(BulkVPIN):
         """
         Estimate the measure using time series data.
         :param pd.DataFrame data:       DataFrame of market data
-        :rtype:                         pd.Series
+        :rtype:                         pd.DataFrame
         """
         self.check_data(data)
 

@@ -9,6 +9,9 @@ class Config(fr.BulkConfVPINConfig):
 
     N_TIME_BAR_FOR_INITIALIZATION = 50
 
+    N_BUCKET_OR_BUCKET_DECAY = 0.95
+    BUCKETS = fr.bulk.RecursiveBulkClassEWMABuckets
+
 
 if __name__ == '__main__':
     config = Config()

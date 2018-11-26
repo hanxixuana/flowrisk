@@ -18,14 +18,16 @@ One may also download from here and manually install
 To implement VPIN, we made
 
     1.  an EWMA estimator of volatility (RecursiveEWMAVol)
-    2.  a numpy.ndarray based buckets with bulk classification of volumes (BulkClassificationBuckets)
-    3.  a recursive VPIN estimator (RecursiveVPIN)
-    4.  a recursive VPIN estimator with VPIN confidence intervals (RecursiveConfVPIN)
-    5.  a recursive model using an EWMA estimator of means and RecursiveEWMAVol, for modeling and log 
+    2.  a numpy.ndarray based buckets with bulk classification of volumes in the MA style (RecursiveBulkClassMABuckets)
+    3.  a numpy.ndarray based buckets with bulk classification of volumes in the EWMA style 
+        (RecursiveBulkClassEWMABuckets)
+    4.  a recursive VPIN estimator (RecursiveVPIN)
+    5.  a recursive VPIN estimator with VPIN confidence intervals (RecursiveConfVPIN)
+    6.  a recursive model using an EWMA estimator of means and RecursiveEWMAVol, for modeling and log 
         innovations of VPINs and for calculating VPINs' confidence intervals (RecursiveEWMABand)
-    6.  a one-shoot VPIN estimator for a series of prices (BulkVPIN)
-    7.  a one-shoot VPIN estimator for a series of prices with VPIN confidence intervals (BulkConfVPIN)
-    8.  various configuration classes (RecursiveVPINConfig, RecursiveConfVPINConfig, BulkVPINConfig, 
+    7.  a one-shoot VPIN estimator for a series of prices (BulkVPIN)
+    8.  a one-shoot VPIN estimator for a series of prices with VPIN confidence intervals (BulkConfVPIN)
+    9.  various configuration classes (RecursiveVPINConfig, RecursiveConfVPINConfig, BulkVPINConfig, 
         BulkConfVPINConfig)
     
 For illustration, we also put the 1-min data of five small caps (CBIO, FBNC, GNC NDLS, QES) and five large caps 
