@@ -21,7 +21,7 @@ class DataLoader(object):
         Return the symbols.
         :rtype:     list
         """
-        return self.FILE_MAPPER.keys()
+        return list(self.FILE_MAPPER.keys())
 
     def load_data(self, symbol):
         """
@@ -160,7 +160,8 @@ class USStocks(object):
             y=self.config.TIME_BAR_PRICE_COL_NAME,
             ax=ax2,
             style='k-.',
-            ylim=(price_min, price_max)
+            ylim=(price_min, price_max),
+            xticks=self.data.index[ax2.get_xticks()]
         )
         ax2.figure.autofmt_xdate()
         ax2.yaxis.tick_right()

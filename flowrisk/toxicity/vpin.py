@@ -224,18 +224,18 @@ class BulkVPIN(BulkMeasure):
         self.check_data(data)
 
         self.recursive_vpin_estimator.initialize_vol_estimator(
-            data.ix[
+            data.loc[
                 data.index[:self.config.N_TIME_BAR_FOR_INITIALIZATION],
                 self.config.TIME_BAR_PRICE_COL_NAME
             ].values
         )
         self.recursive_vpin_estimator.initialize_buckets(
-            data.ix[
+            data.loc[
                 data.index[:self.config.N_TIME_BAR_FOR_INITIALIZATION],
                 self.config.TIME_BAR_PRICE_COL_NAME
             ].values,
             self.recursive_vpin_estimator.vol_estimator.get_latest_vol(),
-            data.ix[
+            data.loc[
                 data.index[:self.config.N_TIME_BAR_FOR_INITIALIZATION],
                 self.config.TIME_BAR_VOLUME_COL_NAME
             ].values,
@@ -272,7 +272,8 @@ class BulkVPIN(BulkMeasure):
                         self.vpins['date'].values[-1]
                     )
             ),
-            figsize=[12, 6.75]
+            figsize=[12, 6.75],
+            xticks=self.vpins.index[::(len(self.vpins.index) // 10)]
         )
         ax.figure.autofmt_xdate()
         ax.set_ylabel("Percentage")
@@ -305,18 +306,18 @@ class BulkConfVPIN(BulkVPIN):
         self.check_data(data)
 
         self.recursive_vpin_estimator.initialize_vol_estimator(
-            data.ix[
+            data.loc[
                 data.index[:self.config.N_TIME_BAR_FOR_INITIALIZATION],
                 self.config.TIME_BAR_PRICE_COL_NAME
             ].values
         )
         self.recursive_vpin_estimator.initialize_buckets(
-            data.ix[
+            data.loc[
                 data.index[:self.config.N_TIME_BAR_FOR_INITIALIZATION],
                 self.config.TIME_BAR_PRICE_COL_NAME
             ].values,
             self.recursive_vpin_estimator.vol_estimator.get_latest_vol(),
-            data.ix[
+            data.loc[
                 data.index[:self.config.N_TIME_BAR_FOR_INITIALIZATION],
                 self.config.TIME_BAR_VOLUME_COL_NAME
             ].values,
@@ -378,7 +379,8 @@ class BulkConfVPIN(BulkVPIN):
                         self.vpins['date'].values[-1]
                     )
             ),
-            figsize=[12, 6.75]
+            figsize=[12, 6.75],
+            xticks=self.vpins.index[::(len(self.vpins.index) // 10)]
         )
         self.vpins.plot(
             x='date',

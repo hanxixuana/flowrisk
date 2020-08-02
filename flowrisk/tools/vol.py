@@ -5,6 +5,8 @@
 
 import numpy as np
 
+from functools import reduce
+
 from abc import ABCMeta, abstractmethod
 
 
@@ -33,6 +35,9 @@ class Vol:
 
 
 class RecursiveEWMAVol(Vol):
+
+    EPSILON = 1e-8
+
     def __init__(self, decay, value_type):
         """
         Instantiate a recursive EWMA estimator of sample volatility of prices.
@@ -173,7 +178,11 @@ class RecursiveEWMAVol(Vol):
         elif self.value_type == 'log':
             if self.latest_var is not None:
                 self.latest_var = (
-                        (1.0 - self.decay) * np.math.log(price / self.latest_price) ** 2.0
+                        (
+                            (1.0 - self.decay)
+                            *
+                            np.math.log(price / (self.latest_price + self.EPSILON) + self.EPSILON) ** 2.0
+                        )
                         +
                         self.decay * self.latest_var
                 )

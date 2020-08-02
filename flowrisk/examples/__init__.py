@@ -3,4 +3,4 @@
 # Created by Xixuan on Nov 22, 2018
 #
 
-from usstocks import USStocks
+from flowrisk.examples.usstocks import USStocks

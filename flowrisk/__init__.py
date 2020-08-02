@@ -8,11 +8,12 @@ from flowrisk.toxicity.vpin import BulkVPINConfig, BulkVPIN
 from flowrisk.toxicity.vpin import BulkConfVPINConfig, BulkConfVPIN
 
 from flowrisk.tools import vol
-import measure
 from flowrisk.toxicity import vpin, bulk
-import examples
+
+import flowrisk.measure as measure
+import flowrisk.examples as examples
 
 
 __name__ = 'Flow Risk'
-__version__ = 0.1
-__all__ = {vol, bulk, measure, vpin}
+__version__ = 0.3
+__all__ = {vol, bulk, measure, vpin, examples}

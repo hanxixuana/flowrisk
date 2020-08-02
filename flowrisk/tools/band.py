@@ -45,6 +45,9 @@ class Band:
 
 
 class RecursiveEWMABand(Band):
+
+    EPSILON = 1e-8
+
     def __init__(self, mean_decay, vol_decay, band_radius):
         """
         Instantiate an object of a series of EWMA based moving confidence intervals
@@ -139,7 +142,7 @@ class RecursiveEWMABand(Band):
             'The mean estimate is None.'
 
         self.mean_estimate = (
-                (1.0 - self.mean_decay) * np.math.log(value / self.latest_value)
+                (1.0 - self.mean_decay) * np.math.log(value / (self.latest_value + self.EPSILON) + self.EPSILON)
                 +
                 self.mean_decay * self.mean_estimate
         )

@@ -10,7 +10,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='flowrisk',
-    version='0.2.2',
+    version='0.3.0',
     description='Order flow risk measures in Python',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -24,7 +24,7 @@ setuptools.setup(
     ],
     zip_safe=True,
     classifiers=[
-        "Programming Language :: Python :: 2.7",
+        "Programming Language :: Python :: 3.8",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],

@@ -8,7 +8,7 @@ import flowrisk as fr
 class Config(fr.BulkConfVPINConfig):
 
     N_TIME_BAR_FOR_INITIALIZATION = 50
-
+    BUCKET_MAX_VOLUME = 10000.0
     N_BUCKET_OR_BUCKET_DECAY = 0.95
     BUCKETS = fr.bulk.RecursiveBulkClassEWMABuckets
 

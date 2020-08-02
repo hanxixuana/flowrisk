@@ -1,6 +1,6 @@
 # Order Flow Risk Measures
 
-Currently, the packages only has VPIN.
+Has been updated to support Python 3.8. Currently, the packages only has VPIN.
 
 ## Installation
 The default way is to open a console and execute
