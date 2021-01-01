@@ -49,7 +49,7 @@ for example,
 
 The piece of the code will automatically calculate VPINs and associated confidence intervals of GNC. We also put
 prices and volumes together with them into a nice picture, which is saved to ./pics/gnc.png by default. Note that
-the calculation of VPINs is fast, but making nice pictures is slow. One may also find out more in test.py.
+the calculation of VPINs is fast, but making nice pictures is slow. One may also find out more in order_flow_risk_analysis_of_ten_us_stocks.ipynb and test.py.
 
 Note that there are several differences between this implementation and the original paper:
 
